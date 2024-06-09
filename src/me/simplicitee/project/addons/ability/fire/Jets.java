@@ -55,17 +55,19 @@ public class Jets extends FireAbility implements AddonAbility {
 		this.minCooldown = ProjectAddons.instance.getConfig().getLong("Abilities.Fire.Jets.Cooldown.Minimum");
 		this.dmgThreshold = player.getHealth() - ProjectAddons.instance.getConfig().getDouble("Abilities.Fire.Jets.DamageThreshold");
 		double speedThreshold = ProjectAddons.instance.getConfig().getDouble("Abilities.Fire.Jets.SpeedThreshold");
-		
-		if (source != null) {
-			this.gliding = true;
-			this.hovering = false;
-		} else if (player.isSprinting() || (player.getVelocity().length() > speedThreshold && Math.abs(player.getVelocity().angle(player.getEyeLocation().getDirection())) < 30)) {
-			this.gliding = true;
-			this.hovering = false;
-		} else {
-			this.gliding = false;
-			this.hovering = true;
-		}
+
+		this.gliding = false;
+		this.hovering = true;
+//		if (source != null) {
+//			this.gliding = true;
+//			this.hovering = false;
+//		} else if (player.isSprinting() || (player.getVelocity().length() > speedThreshold && Math.abs(player.getVelocity().angle(player.getEyeLocation().getDirection())) < 30)) {
+//			this.gliding = true;
+//			this.hovering = false;
+//		} else {
+//			this.gliding = false;
+//			this.hovering = true;
+//		}
 		
 		this.flightHandler.createInstance(player, getName());
 		player.setAllowFlight(true);
@@ -111,7 +113,8 @@ public class Jets extends FireAbility implements AddonAbility {
 		if (hovering) {
 			player.setFlying(true);
 			player.setGliding(false);
-			player.setVelocity(player.getVelocity().add(new Vector(0, -0.015, 0)));
+			player.setVelocity(player.getVelocity().add(new Vector(0, 0, 0)));
+			player.setSprinting(false);
 			pDirection = new Vector(0, -0.4, 0);
 		} else if (gliding) {
 			player.setGliding(true);
@@ -152,13 +155,18 @@ public class Jets extends FireAbility implements AddonAbility {
 			return;
 		}
 		
-		if (hovering) {
-			hovering = false;
-			gliding = true;
-		} else if (source == null || source.isRemoved()) {
-			hovering = true;
-			gliding = false;
-		}
+//		if (hovering) {
+//			hovering = false;
+//			gliding = true;
+//		} else if (source == null || source.isRemoved()) {
+//			hovering = true;
+//			gliding = false;
+//		}
+	}
+
+	public void startFlying() {
+		hovering = false;
+		gliding = true;
 	}
 	
 	public boolean checkHeight() {

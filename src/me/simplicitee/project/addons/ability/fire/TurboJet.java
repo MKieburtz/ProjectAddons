@@ -46,6 +46,7 @@ public class TurboJet extends FireAbility implements AddonAbility, ComboAbility 
 		} else {
 			jets = getAbility(player, Jets.class);
 		}
+		jets.startFlying();
 		ParticleEffect.EXPLOSION_NORMAL.display(player.getLocation(), 1);
 		start();
 	}
@@ -53,10 +54,11 @@ public class TurboJet extends FireAbility implements AddonAbility, ComboAbility 
 	@Override
 	public void progress() {
 		jets.setFlySpeed(speed);
-		speed -= 0.025;
+		speed -= 0.125;
 		
 		if (speed <= normal) {
-			jets.setFlySpeed(normal);
+			//jets.setFlySpeed(normal);
+			jets.remove();
 			bPlayer.addCooldown(this);
 			remove();
 			return;
