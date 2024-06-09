@@ -322,6 +322,8 @@ public class ProjectAddons extends JavaPlugin {
 		c.addDefault("Combos.Fire.TurboJet.Enabled", true);
 		c.addDefault("Combos.Fire.TurboJet.Cooldown", 12000);
 		c.addDefault("Combos.Fire.TurboJet.Speed", 1.95);
+		c.addDefault("Combos.Fire.TurboJet.Instructions",
+				"Activate Jets > HeatControl (Hold sneak) > Jets (Release sneak)");
 		
 		// ---- Waterbending ----
 		// Hydrojet

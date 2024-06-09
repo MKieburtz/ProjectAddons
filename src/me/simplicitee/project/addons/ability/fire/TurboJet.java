@@ -2,6 +2,7 @@ package me.simplicitee.project.addons.ability.fire;
 
 import java.util.ArrayList;
 
+import com.projectkorra.projectkorra.configuration.ConfigManager;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -123,7 +124,7 @@ public class TurboJet extends FireAbility implements AddonAbility, ComboAbility 
 	
 	@Override
 	public String getInstructions() {
-		return "HeatControl (Hold sneak) > Jets (Release sneak)";
+		return ProjectAddons.instance.getConfig().getString("Combos.Fire.TurboJet.Instructions");
 	}
 	
 	@Override
