@@ -113,7 +113,7 @@ public class Jets extends FireAbility implements AddonAbility {
 		if (hovering) {
 			player.setFlying(true);
 			player.setGliding(false);
-			player.setVelocity(player.getVelocity().add(new Vector(0, 0, 0)));
+			player.setVelocity(player.getVelocity().add(new Vector(0, -0.007, 0)));
 			player.setSprinting(false);
 			pDirection = new Vector(0, -0.4, 0);
 		} else if (gliding) {
@@ -226,11 +226,11 @@ public class Jets extends FireAbility implements AddonAbility {
 	
 	@Override
 	public String getDescription() {
-		return "Create jets of flames from your feet to hover off the ground or fly through the sky. Activating the ability while moving fast enough and looking in the direction you're moving will automatically put you in flying mode!";
+		return "Create jets of flames from your feet to hover off the ground!";
 	}
 	
 	@Override
 	public String getInstructions() {
-		return "Left click to activate, Left click to switch modes, and Sneak + Left click to cancel ability";
+		return "While in the air, left click to activate. Jump + left click works. Sneak + left click to cancel ability";
 	}
 }

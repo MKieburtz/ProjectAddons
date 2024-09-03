@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.projectkorra.projectkorra.configuration.ConfigManager;
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 import com.projectkorra.projectkorra.ability.AddonAbility;
@@ -48,6 +49,7 @@ public class TurboJet extends FireAbility implements AddonAbility, ComboAbility 
 		}
 		jets.startFlying();
 		ParticleEffect.EXPLOSION_NORMAL.display(player.getLocation(), 1);
+		player.getWorld().playSound(player.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 1, 0);
 		start();
 	}
 
@@ -121,7 +123,7 @@ public class TurboJet extends FireAbility implements AddonAbility, ComboAbility 
 
 	@Override
 	public String getDescription() {
-		return "Release massive power all at once to make your jets go turbo speed!";
+		return "End your Jets hover by quickly propelling yourself forward!";
 	}
 	
 	@Override
